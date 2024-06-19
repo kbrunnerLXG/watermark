@@ -28,10 +28,11 @@ def add_watermark():
     background = Image.open(file1_path)
     foreground = Image.open(watermark_path)
     resize_image = foreground.resize((50, 50))
-    background.paste(resize_image,(0, 0), resize_image)
-    final_image_path = './final_image.png'
+    background.paste(resize_image, (0, 0), resize_image)
+    final_image_path = './images/final_image.png'
     background.save(final_image_path, format='png')
     change_image(final_image_path)
+
 
 def change_watermark():
     global watermark_path
@@ -44,7 +45,7 @@ BACKGROUND_COLOR = "#76ff33"
 window = Tk()
 # im = Image.open("hopper.ppm")
 window.title('Watermark Tool')
-window.config(height=800,width=800,pady=15, padx=15, bg=BACKGROUND_COLOR)
+window.config(height=800, width=800, pady=15, padx=15, bg=BACKGROUND_COLOR)
 
 # Canvas layout
 canvas = Canvas(width=400, height=400, bg=BACKGROUND_COLOR, highlightthickness=0)
@@ -61,10 +62,8 @@ watermark_preset_btn = Button(text='Change Watermark', highlightthickness=0, com
 watermark_preset_btn.grid(column=1, row=2)
 add_watermark_btn = Button(text='Add Watermark', highlightthickness=0, command=add_watermark)
 
-
 # Labels
 title = Label(window, text='Watermark Tool', font=("Aerial", 15), fg='Black', bg=BACKGROUND_COLOR)
 title.grid(row=0, column=0, columnspan=2)
-
 
 window.mainloop()
